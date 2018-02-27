@@ -5,7 +5,7 @@ import reducers from '../client/reducers';
 
 export default (req) => {
     const axiosInstance = axios.create({
-        baseURL: 'http://react-ssr-api.herokuapp.com',
+        baseURL: 'http://localhost:5000',
         headers: { cookie: req.get('cookie') || '' }
     });
 

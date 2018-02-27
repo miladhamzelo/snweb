@@ -7,7 +7,7 @@ const Header = ({ auth }) => {
     const authButton = auth ? (
         <a href="/api/logout">Logout</a>
     ) : (
-        <a href="/api/auth/google">Login</a>
+        <Link to="/login">Login</Link>
     );
 
     return (
@@ -15,7 +15,7 @@ const Header = ({ auth }) => {
             <Link to="/">SNOnline</Link>
             <div>
                 <Link to="/users">Users</Link>
-                <Link to="/admins">Admins</Link>
+                {auth ? (<Link to="/admins">Admins</Link>) : ''}                
                 {authButton}
             </div>
         </div>
