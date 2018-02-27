@@ -22,9 +22,11 @@ const LoginPage = ({ auth, dispatch}) => {
     }
     return (
         auth && auth ? (
-            <Redirect to="/admins" />
+            <Redirect to="/admin/dashboard" />
         ) : (
-            <LoginForm handleSubmit={handleSubmit} />
+            <div className="row" style={{marginTop: '15vh'}}>
+                <LoginForm handleSubmit={handleSubmit} />                                                            
+            </div>                                                     
         )        
     )
 }

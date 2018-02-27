@@ -15,7 +15,7 @@ const Header = ({ auth }) => {
             <Link to="/">SNOnline</Link>
             <div>
                 <Link to="/users">Users</Link>
-                {auth ? (<Link to="/admins">Admins</Link>) : ''}                
+                {auth ? (<Link to="/admin/dashboard/admins">Admins</Link>) : ''}                
                 {authButton}
             </div>
         </div>

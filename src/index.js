@@ -14,7 +14,7 @@ app.use('/api', proxy('http://localhost:5000', {
         return opts;
     }
 }))
-app.use(express.static('public'));
+app.use('/public', express.static('public'));
 app.get('*', (req,res) => {
     const store = createStore(req);
 
