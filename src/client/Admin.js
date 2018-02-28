@@ -1,15 +1,15 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
-import { fetchCurrentUser } from './actions';
 
-import Header from './components/Header';
+import { fetchCurrentUser } from './actions';
+import AppBar from './components/AppBar';
 import requireAuth from './components/hocs/requireAuth';
+
 
 const Admin = ({ route }) => {
     return (
         <div>
-            <h1>Admin Dashboard</h1>
-            <Header />           
+            <AppBar /> 
             {renderRoutes(route.routes)}
         </div>
     );

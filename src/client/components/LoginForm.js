@@ -1,40 +1,57 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl } from 'material-ui/Form';
+import FileUpload from 'material-ui-icons/FileUpload';
+import Typography from 'material-ui/Typography';
 
-const LoginForm = ({ handleSubmit }) => (
-    <div className="container">
-        <div className="row">
-            <div className="col s12 m12 l12">
-                <form onSubmit={handleSubmit}>
-                    <div className="card">
-                        <div className="card-content">           
-                                <div className="row">
-                                    <span className="card-title col s8 offset-s2">Panel de control | <small>SNOnline</small></span>             
-                                </div>                        
-                                <div className="row">
-                                    <div className="input-field col s8 offset-s2">                
-                                        <input id="email" type="email" name="email" className="validate" />
-                                        <label htmlFor="email">Email</label>
-                                    </div>                                        
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s8 offset-s2">                
-                                        <input id="password" type="password" name="password" className="validate" />            
-                                        <label htmlFor="password">Password</label>
-                                    </div>                    
-                                </div>                                              
-                        </div>
-                        <div className="card-action">
-                            <div className="row">
-                                <div className="col s12" style={{textAlign: 'center'}}>
-                                    <button className="btn waves-effect waves-light" type="submit">Ingresar</button>   
-                                </div>
-                            </div>                                                                                                                     
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>    
-    </div>
+const styles = theme => ({
+    root: theme.mixins.gutters({
+      paddingTop: 16,
+      paddingBottom: 16,
+      marginTop: theme.spacing.unit * 3,
+    }),
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    formControl: {
+        margin: theme.spacing.unit * 3        
+    },
+    inputControl: {
+        fontSize: 15
+    }
+});
+
+const LoginForm = ({ handleSubmit, classes }) => (
+    <Paper className={classes.root} elevation={4}>
+        <form onSubmit={handleSubmit} className={classes.container}>
+            <FormControl fullWidth className={classes.formControl}>
+                <h2>Panel de control | SNOnline</h2>
+            </FormControl>
+            <FormControl fullWidth  className={classes.formControl}>
+                <InputLabel className={classes.inputControl} htmlFor="email">Email</InputLabel>
+                <Input className={classes.inputControl} id="email" type="email" name="email" />
+            </FormControl>
+            <FormControl fullWidth  className={classes.formControl}>
+                <InputLabel className={classes.inputControl} htmlFor="password">Contraseña</InputLabel>
+                <Input className={classes.inputControl} id="password" type="password" name="password" />
+            </FormControl>
+            <FormControl fullWidth  className={classes.formControl}>
+                <Button type="submit" color="primary" variant="raised">
+                    Ingresar 
+                    <FileUpload className={classes.rightIcon} />
+                </Button>
+            </FormControl>
+        </form>
+    </Paper>
 );
 
-export default LoginForm;
+LoginForm.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(LoginForm);

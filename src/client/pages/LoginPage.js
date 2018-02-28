@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+
 import LoginForm from './../components/LoginForm';
 import { fetchCurrentUser } from '../actions';
 
 
-const LoginPage = ({ auth, dispatch}) => {
+const LoginPage = ({ auth, dispatch }) => {
+
     function handleSubmit(e) {
         e.preventDefault();
         axios.post('/api/login', {email: e.target.email.value, password: e.target.password.value})
@@ -20,13 +22,16 @@ const LoginPage = ({ auth, dispatch}) => {
                 alert('Usuario y/o contraseña no válidos.')
             })
     }
+
     return (
         auth && auth ? (
             <Redirect to="/admin/dashboard" />
-        ) : (
-            <div className="row" style={{marginTop: '15vh'}}>
-                <LoginForm handleSubmit={handleSubmit} />                                                            
-            </div>                                                     
+        ) : (       
+            <div className="grandParentContainer">
+                <div className="parentContainer">
+                    <LoginForm handleSubmit={handleSubmit} />             
+                </div>
+            </div>                                                           
         )        
     )
 }

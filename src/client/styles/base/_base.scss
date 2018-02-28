@@ -1,0 +1,59 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: $m-size;
+}
+
+button {
+    cursor: pointer;    
+}
+
+button:disabled {
+    cursor: default;
+}
+
+.is-active {
+    font-weight: bold;
+}
+
+.ql-editor{
+    min-height: 400px !important;
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+.spinContainer {
+    text-align: center;
+    border-radius: 4px;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+  }
+
+
+.login-form-button {
+    width: 100%;
+}
+
+.grandParentContainer{
+    display:table;
+    height:100%;
+    margin: 0 auto;    
+}
+.parentContainer{
+display:table-cell;
+vertical-align:middle;  
+}
+.parentContainer .login-form {
+border:1px solid #eee;
+padding:10px; 
+width:300px;
+}

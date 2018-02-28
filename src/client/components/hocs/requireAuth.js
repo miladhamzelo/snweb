@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../../actions';
+import Spinner from './../Spinner';
 
 export default (ChildComponent) => {
     class RequireAuth extends Component {
@@ -13,7 +14,7 @@ export default (ChildComponent) => {
                 case false:
                     return <Redirect to="/login" />
                 case null:
-                    return <div>Cargando ...</div>
+                    return <Spinner />
                 default:
                     return <ChildComponent {...this.props} />
             }
