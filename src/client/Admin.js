@@ -9,8 +9,10 @@ import requireAuth from './components/hocs/requireAuth';
 const Admin = ({ route }) => {
     return (
         <div>
-            <AppBar /> 
-            {renderRoutes(route.routes)}
+            <AppBar />
+            <div className="container">
+                {renderRoutes(route.routes)}
+            </div>
         </div>
     );
 };

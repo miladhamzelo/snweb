@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import 'moment/locale/es'
 import express from 'express';
 import renderer from './helpers/renderer';
 import { matchRoutes } from 'react-router-config';

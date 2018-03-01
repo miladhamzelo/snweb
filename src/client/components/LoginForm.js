@@ -1,57 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Button from 'material-ui/Button';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl } from 'material-ui/Form';
-import FileUpload from 'material-ui-icons/FileUpload';
-import Typography from 'material-ui/Typography';
 
-const styles = theme => ({
-    root: theme.mixins.gutters({
-      paddingTop: 16,
-      paddingBottom: 16,
-      marginTop: theme.spacing.unit * 3,
-    }),
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    formControl: {
-        margin: theme.spacing.unit * 3        
-    },
-    inputControl: {
-        fontSize: 15
-    }
-});
 
-const LoginForm = ({ handleSubmit, classes }) => (
-    <Paper className={classes.root} elevation={4}>
-        <form onSubmit={handleSubmit} className={classes.container}>
-            <FormControl fullWidth className={classes.formControl}>
-                <h2>Panel de control | SNOnline</h2>
-            </FormControl>
-            <FormControl fullWidth  className={classes.formControl}>
-                <InputLabel className={classes.inputControl} htmlFor="email">Email</InputLabel>
-                <Input className={classes.inputControl} id="email" type="email" name="email" />
-            </FormControl>
-            <FormControl fullWidth  className={classes.formControl}>
-                <InputLabel className={classes.inputControl} htmlFor="password">Contraseña</InputLabel>
-                <Input className={classes.inputControl} id="password" type="password" name="password" />
-            </FormControl>
-            <FormControl fullWidth  className={classes.formControl}>
-                <Button type="submit" color="primary" variant="raised">
-                    Ingresar 
-                    <FileUpload className={classes.rightIcon} />
-                </Button>
-            </FormControl>
-        </form>
-    </Paper>
+const LoginForm = ({ handleSubmit }) => (
+    <form onSubmit={handleSubmit}>
+        <div className="card">
+            <header className="is-center">
+                <h4>Panel de control</h4>
+            </header>
+
+            <div className="row">
+                <div className="col">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <label htmlFor="password">Contraseña</label>
+                    <input type="password" id="password" name="password" />
+                </div>
+            </div>
+
+            <footer className="is-center">
+                <button type="submit" className="button primary">Ingresar</button>
+            </footer>
+        </div>
+    </form>
 );
 
-LoginForm.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(LoginForm);
+export default LoginForm;

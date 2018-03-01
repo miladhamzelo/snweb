@@ -1,6 +1,7 @@
 //root Client side app
 import 'babel-polyfill';
-import './styles/styles.scss'
+import './styles/styles.scss';
+import 'moment/locale/es';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';

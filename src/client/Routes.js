@@ -5,7 +5,7 @@ import Admin from './Admin';
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 import NotFoundPage from './pages/NotFoundPage';
-import AdminsListPage from './pages/AdminsListPage';
+import DashboardPage from './pages/DashboardPage';
 import LoginPage from './pages/LoginPage';
 
 export default [
@@ -27,11 +27,10 @@ export default [
             },
             {
                 ...Admin,
-                path: '/admin/dashboard',
                 routes: [
                     {
-                        ...AdminsListPage,
-                        path: '/admin/dashboard/admins',
+                        ...DashboardPage,
+                        path: '/admin/dashboard',
                         exact: true
                     }
                 ]

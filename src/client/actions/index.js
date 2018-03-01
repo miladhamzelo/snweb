@@ -18,12 +18,13 @@ export const fetchCurrentUser = () => async (dispatch, getState, api) => {
     });
 };
 
-export const FETCH_ADMINS = "fetch_admins";
-export const fetchAdmins = () => async (dispatch, getState, api) => {
-    const res = await api.get('/admins');
+export const FETCH_ARTICLES = "fetch_articles";
+export const fetchArticles = () => async (dispatch, getState, api) => {
+    const res = await api.get('/fetch_articles');
 
     dispatch({
-        type: FETCH_ADMINS,
+        type: FETCH_ARTICLES,
         payload: res
     });
 };
+
