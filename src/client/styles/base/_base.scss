@@ -37,6 +37,40 @@ button:disabled {
     margin-left: -50px;
     margin-top: -50px;
   }
+  .spinner {
+    /* Spinner size and color */
+    width: 1.5rem;
+    height: 1.5rem;
+    border-top-color: #444;
+    border-left-color: #444;
+  
+    /* Additional spinner styles */
+    animation: spinner 400ms linear infinite;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;  
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .spinner-large {
+    width: 8rem;
+    height: 8rem;
+    border-width: 6px;
+  }
+
+  .spinner-blue {
+    border-top-color: rgb(161, 12, 190);
+    border-left-color:  rgb(161, 12, 190);
+  }
 
 
 .login-form-button {
@@ -168,7 +202,7 @@ a:hover
 {
   position: absolute;
   width: 100vh;
-  margin: -100px 0 0 -90px;
+  margin: -100px 0 0 -130px;
   padding: 50px;
   padding-top: 125px;
   
@@ -199,10 +233,10 @@ a:hover
 
 .container {
     position: absolute;
-    border: 12px solid #E8EBEE;
-    border-radius: 10px;
+    // border: 12px solid #E8EBEE;
+    // border-radius: 10px;
     top: 60;
-    margin-top: 15px;
+    margin-top: 25px;
     margin-bottom: 15px;
     bottom: 0;
     right: 0;
@@ -212,4 +246,34 @@ a:hover
 .panels {
   list-style-type: none;
 }
-    
+
+.card-header {
+  position: relative;
+  top: -20px;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.card-header-pending {
+  background-color: #F5AF13;
+}
+.card-header-approved {
+  background-color: #1a9f60;
+}
+.card {
+  margin-top: 20px;
+}
+
+.material-icons {
+  vertical-align: middle;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.title-with-icon {
+  font-size: 20px;
+  line-height: 2px;
+  font-weight: 600;
+}

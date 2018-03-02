@@ -22,7 +22,6 @@ export default (req, store, context) => {
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link rel="stylesheet" href="https://unpkg.com/chota@latest">
             <link rel="stylesheet" type="text/css" href="/public/styles.css" />                      
             </head>
             <body>

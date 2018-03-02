@@ -3,54 +3,86 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchArticles } from '../actions';
 import requireAuth from '../components/hocs/requireAuth';
-import moment from 'moment';
+import axios from 'axios';
+
 import Spinner from '../components/Spinner';
+import PendingArticlesList from '../components/PendingArticlesList';
+import ApprovedArticlesList from '../components/ApprovedArticlesList';
 
 class DashboardPage extends Component {
+    constructor(props){
+        super(props);
+        this.approveButton = this.approveButton.bind(this);
+    }
+
     componentWillMount() {
         this.props.fetchArticles();
     }
-    // renderAdmins() {
-    //     return this.props.admins.map(admin => {
-    //         return <li key={admin.id}>{admin.name}</li>
-    //     });
-    // }
-    renderPendingArticles() {
 
-        const pending = this.props.blog.filter(article => {
-            return article.status === false;
-        });
-
-        return pending.map(article => {
-            return <li key={article._id}>
-                {`${moment(article.createdAt).format('DD/MM/YYYY')} - `}
-                {`${article.title.substring(0,20)}... - `}
-                <Link className="outline button" to={`/admin/edit/${article._id}`}>Aprobar</Link>
-            </li>
-        })
+    approveButton(cell, row) {
+        return (
+            <button className="button outline primary" onClick={() => {
+                axios.post(`/api/approve_article`, { id: row.id } ).then(() => {
+                    this.props.fetchArticles();
+                })
+            }}>
+                Aprobar
+            </button>
+        );
     }
+
+    editButton(cell, row) {
+        return (
+            <Link className="button outline primary" 
+                to="#"
+            >
+                Editar
+            </Link>
+        );
+    }
+
     render() {
         switch(this.props.blog){
             case null:
                 return (
                     <Spinner />
-            )
+                )
             default:
                 return (
-                <div className="row">
-                    <div className="col">
-                        <blockquote>
-                            <h2>Notas pendientes</h2>
-                            <ul className="panels">{this.renderPendingArticles()}</ul>
-                        </blockquote>
+                    <div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="card"> 
+                                    <div className="card-header card-header-pending">                               
+                                        <span className="title-with-icon"><i className="material-icons">alarm</i>Pendientes</span>
+                                    </div>
+
+                                    <PendingArticlesList 
+                                        pending={this.props.blog.filter((article) => article.status === false)} 
+                                        approveButton={this.approveButton}
+                                        editButton={this.editButton}
+                                    />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="card"> 
+                                    <div className="card-header card-header-approved">
+                                        <span className="title-with-icon"><i className="material-icons">check_circle</i>Aprobados</span>
+                                    </div>                               
+
+                                    <ApprovedArticlesList 
+                                        approved={this.props.blog.filter((article) => article.status === true)} 
+                                        editButton={this.editButton}
+                                    />
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col">
-                        <blockquote className="primary">
-                            {/* <ul>{this.renderAdmins()}</ul> */}
-                        </blockquote>
-                    </div>
-                </div>
-            )
+                )
         }
     }
 };
